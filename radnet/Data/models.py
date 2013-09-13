@@ -1,12 +1,20 @@
 from django.db import models
+from django.forms import ModelForm
+from django.forms.extras.widgets import SelectDateWidget
 
 
 class BetaEfficiency(models.Model):
 	coefficient = models.FloatField()
 
+	def __unicode__(self):
+		return self.coefficient
+
 
 class AlphaEfficiency(models.Model):
 	coefficient = models.FloatField()
+
+	def __unicode__(self):
+		return self.coefficient
 
 
 class Filter(models.Model):
@@ -19,12 +27,18 @@ class Filter(models.Model):
 	alphaCoeff = models.ForeignKey(AlphaEfficiency)
 	betaCoeff = models.ForeignKey(BetaEfficiency)
 
+	def __unicode__(self):
+		return str(self.startDate) + ' - ' + str(self.endDate)
+
 class RawData(models.Model):
 	Filter = models.ForeignKey(Filter)
 	time = models.IntegerField()
 	alphaReading = models.FloatField()
 	betaReading = models.FloatField()
 	cleanFilterCount = models.FloatField()
+
+	def __unicode__(self):
+		return str(self.Filter) + ' ' + str(self.time)
 
 
 class Activity(models.Model):
@@ -49,3 +63,24 @@ class BetaCurve(models.Model):
 	beta1Lambda = models.FloatField()
 	beta2 = models.FloatField()
 	beta2Lambda = models.FloatField()
+
+class FilterForm(ModelForm):
+	class Meta:
+		model = Filter
+		widgets = {
+			'startDate': SelectDateWidget(),
+			'endDate': SelectDateWidget(),
+		}
+
+class RawDataForm(ModelForm):
+	class Meta:
+		model = RawData
+		exclude = ('filterID',)
+
+class AlphaCoeffForm(ModelForm):
+	class Meta:
+		model = AlphaEfficiency
+
+class BetaCoeffForm(ModelForm):
+	class Meta:
+		model = BetaEfficiency
