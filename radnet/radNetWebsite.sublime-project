@@ -2,7 +2,8 @@
 	"folders":
 	[
 		{
-			"path": "/home/moravec/radNetWebsite/radnet"
+			"follow_symlinks": true,
+			"path": "/home/moravec/unkRadNetWebsite2/radnet"
 		}
 	]
 }
