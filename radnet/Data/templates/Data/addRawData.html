@@ -3,7 +3,9 @@
 
 {% block content %}
 	<form action="/Data/AddRawData/" method="post" id="rowsForm"> {% csrf_token %}
-		{{rowForm.as_p}}
+		<table>
+			{{rowForm.as_table}}
+		</table>
 		<input type="submit" value="Set Rows" />
 	</form>
 	<form action="/Data/AddRawData/" method="post" id="rawDataForm"> {% csrf_token %}

@@ -43,6 +43,8 @@ def addRawData(request):
 		rowForm = rawDataRows(request.POST)
 		if rowForm.is_valid():
 			rows = rowForm.cleaned_data['rows']
+		else:
+			rows = 1
 
 
 	rawDataForm = [] 
