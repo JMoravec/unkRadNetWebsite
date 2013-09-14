@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Add Raw Data{% endblock %}
+
+{% block content %}
+	<form action="/Data/AddRawData/" method="post" id="rowsForm"> {% csrf_token %}
+		{{rowForm.as_p}}
+		<input type="submit" value="Set Rows" />
+	</form>
+	<form action="/Data/AddRawData/" method="post" id="rawDataForm"> {% csrf_token %}
+	{{ rawDataForm.non_field_erros }}
+	{{ rawDataForm.0.Filter}}
+	<table border="1">
+		<tr>
+			<td>Time</td>
+			<td>(Alpha, Beta)</td>
+			<td>CFC</td>
+			<td>Net(Alpha, Beta)</td>
+			<td>Alpha</td>
+			<td>Net (Beta)</td>
+			<td>Alpha Act. in pCi</td>
+			<td>Beta Act in pCi</td>
+			<td>t - tstop</td>
+		</tr>
+		{% for formRow in rawDataForm %}
+		<tr>
+			<td>{{formRow.time}}</td>
+			<td>{{formRow.betaReading}}</td>
+			<td>{{formRow.cleanFilterCount}}</td>
+			<td></td>
+			<td>{{formRow.alphaReading}}</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		{% endfor %}
+	</table>
+	<input type="submit" value="Submit" />
+	</form>
+{% endblock %}

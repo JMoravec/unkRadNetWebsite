@@ -53,3 +53,15 @@
 	border-bottom: 3px solid rgb(98,25, 159);
 	font-weight: bold;
 }
+
+#content {
+	margin: 10px; 
+}
+
+#rawDataForm ul li{
+	display: inline;
+}
+
+#rawDataForm input {
+	width: 100px;
+}

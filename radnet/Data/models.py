@@ -1,3 +1,4 @@
+from django import forms
 from django.db import models
 from django.forms import ModelForm
 from django.forms.extras.widgets import SelectDateWidget
@@ -75,7 +76,10 @@ class FilterForm(ModelForm):
 class RawDataForm(ModelForm):
 	class Meta:
 		model = RawData
-		exclude = ('filterID',)
+
+class ActivityForm(ModelForm):
+	class Meta:
+		model = Activity
 
 class AlphaCoeffForm(ModelForm):
 	class Meta:
@@ -84,3 +88,6 @@ class AlphaCoeffForm(ModelForm):
 class BetaCoeffForm(ModelForm):
 	class Meta:
 		model = BetaEfficiency
+
+class rawDataRows(forms.Form):
+	rows = forms.IntegerField()

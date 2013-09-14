@@ -2,8 +2,6 @@
 {% block title %}Add Data{% endblock %}
 
 {% block content %}
-	<form action="/Data/addData/" method="post"> {% csrf_token %}
-	{{ filterform.as_p}}
-	<input type="submit" value="Submit" />
-	</form>
+	<a href="/Data/AddFilter">Add Filter</a>
+	<a href="/Data/AddRawData">Add Raw Data</a>
 {% endblock %}
