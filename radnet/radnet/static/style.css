@@ -1,0 +1,55 @@
+#header {
+	text-align:left;
+	margin: -10px 0px 0px -10px;
+	padding: 0px;
+	height: 5.8em;
+	background-color: rgb(237, 249, 255);
+}
+
+#body {
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+	font-size: 62.5%;
+	color: black;
+	background-color: rgb(255, 255, 255);
+	min-width: 900px;
+}
+
+#logo {
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	font-size: 2.2em;
+	color: rgb(118, 200, 64);
+	padding: 0.2em 0px 2px 12px;
+	margin: 0px;
+}
+
+#menu {
+	height: 2.6em;
+	vertical-align: bottom;
+	padding: 0px 0px 0px 12px;
+	margin: 5px 0px -5px 0px;
+	border-width: 0px;
+	border-style: solid;
+	border-color: rgb(221, 221, 221);
+}
+
+#menu div{
+	text-align: center;
+	margin: 0px 0px 0px 0.3em;
+	display: inline;
+	height: 2.6em;
+	width: auto;
+	float: left;
+}
+
+#menu a {
+	margin: 0px 10px 0px 0px;
+}
+
+#menu div.selected a {
+	color: rgb(98, 25, 159);
+	border-bottom: 3px solid rgb(98,25, 159);
+	font-weight: bold;
+}

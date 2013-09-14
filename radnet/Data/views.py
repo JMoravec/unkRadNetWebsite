@@ -4,7 +4,7 @@ from Data.models import *
     
 
 def index(request):
-	return HttpResponse("Hello, world. You're at the poll index.")
+	return render(request, 'Data/index.html', {})
 
 def addData(request):
 	if request.method == 'POST':

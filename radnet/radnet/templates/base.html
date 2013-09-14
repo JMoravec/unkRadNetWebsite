@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static '/static/style.css' %}" />
+	<title>{% block title %}UNK Radnet{% endblock %}</title>
+</head>
+
+<body>
+	<div id="header">
+		<h1 id="logo"><b>UNK Radnet</b></h1>
+		<div id="menu">
+			<div>
+				<a href="/Data/" >Home</a>
+			</div>
+
+			<div>
+				<a href="/Data/AddData/">Add Data</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="content">
+		{% block content %}{% endblock %}
+	</div>
+	
+
+</body>
+</html>
