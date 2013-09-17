@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"HttpRespo",
+				"HttpResponseRedirect"
+			],
+			[
+				"activi",
+				"activityData"
+			],
+			[
+				"acti",
+				"activityData"
+			],
+			[
 				"HttpR",
 				"HttpResponseRedirect"
 			],
@@ -55,7 +67,15 @@
 			"file": "Data/views.py",
 			"settings":
 			{
-				"buffer_size": 1246,
+				"buffer_size": 2621,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Data/urls.py",
+			"settings":
+			{
+				"buffer_size": 579,
 				"line_ending": "Unix"
 			}
 		},
@@ -63,7 +83,7 @@
 			"file": "Data/templates/Data/checkData.html",
 			"settings":
 			{
-				"buffer_size": 118,
+				"buffer_size": 1510,
 				"line_ending": "Unix"
 			}
 		},
@@ -76,53 +96,10 @@
 			}
 		},
 		{
-			"file": "radnet/templates/base.html",
-			"settings":
-			{
-				"buffer_size": 508,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Data/urls.py",
-			"settings":
-			{
-				"buffer_size": 491,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "radnet/settings.py",
 			"settings":
 			{
 				"buffer_size": 5597,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "radnet/static/style.css",
-			"settings":
-			{
-				"buffer_size": 1028,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Data/templates/Data/addRawData.html",
-			"settings":
-			{
-				"buffer_size": 298,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "from django import forms\nfrom django.db import models\nfrom django.forms import ModelForm\nfrom django.forms.extras.widgets import SelectDateWidget\n\n\nclass BetaEfficiency(models.Model):\n	coefficient = models.FloatField()\n\n	def __unicode__(self):\n		return self.coefficient\n\n\nclass AlphaEfficiency(models.Model):\n	coefficient = models.FloatField()\n\n	def __unicode__(self):\n		return self.coefficient\n\n\nclass Filter(models.Model):\n	filterNum = models.IntegerField(unique=True)\n	startDate = models.DateField()\n	endDate = models.DateField()\n	sampleTime = models.FloatField()\n	sampleVolume = models.FloatField()\n	timeStart = models.FloatField()\n	alphaCoeff = models.ForeignKey(AlphaEfficiency)\n	betaCoeff = models.ForeignKey(BetaEfficiency)\n\n	def __unicode__(self):\n		return str(self.startDate) + ' - ' + str(self.endDate)\n\nclass RawData(models.Model):\n	Filter = models.ForeignKey(Filter)\n	time = models.IntegerField()\n	alphaReading = models.FloatField()\n	betaReading = models.FloatField()\n	cleanFilterCount = models.FloatField()\n\n	def __unicode__(self):\n		return str(self.Filter) + ' ' + str(self.time)\n\n\nclass Activity(models.Model):\n	filterID = models.ForeignKey(Filter)\n	rawData = models.ForeignKey(RawData)\n	deltaT = models.FloatField()\n	alphaAct = models.FloatField()\n	betaAct = models.FloatField()\n\n\nclass AlphaCurve(models.Model):\n	filterID = models.ForeignKey(Filter)\n	alpha1 = models.FloatField()\n	alpha1Lambda = models.FloatField()\n	alpha2 = models.FloatField()\n	alpha2Lambda = models.FloatField()\n\n\nclass BetaCurve(models.Model):\n	filterID = models.ForeignKey(Filter)\n	beta1 = models.FloatField()\n	beta1Lambda = models.FloatField()\n	beta2 = models.FloatField()\n	beta2Lambda = models.FloatField()\n\nclass FilterForm(ModelForm):\n	class Meta:\n		model = Filter\n		widgets = {\n			'startDate': SelectDateWidget(),\n			'endDate': SelectDateWidget(),\n		}\n\nclass RawDataForm(ModelForm):\n	class Meta:\n		model = RawData\n\nclass ActivityForm(ModelForm):\n	class Meta:\n		model = Activity\n\nclass AlphaCoeffForm(ModelForm):\n	class Meta:\n		model = AlphaEfficiency\n\nclass BetaCoeffForm(ModelForm):\n	class Meta:\n		model = BetaEfficiency\n",
-			"file": "Data/models.py",
-			"file_size": 2178,
-			"file_write_time": 130238214976838849,
-			"settings":
-			{
-				"buffer_size": 2117,
 				"line_ending": "Unix"
 			}
 		}
@@ -130,7 +107,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 285.0,
+		"height": 306.0,
 		"selected_items":
 		[
 			[
@@ -139,6 +116,10 @@
 			],
 			[
 				":we",
+				":w - Save"
+			],
+			[
+				":ws",
 				":w - Save"
 			],
 			[
@@ -158,7 +139,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 575.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -180,6 +161,9 @@
 	"file_history":
 	[
 		"/home/moravec/unkRadNetWebsite2/radnet/radnet/templates/base.html",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/addRawData.html",
+		"/home/moravec/unkRadNetWebsite2/radnet/radnet/static/style.css",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/urls.py",
 		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/index.html",
 		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/addData.html",
 		"/home/moravec/unkRadNetWebsite2/radnet/radnet/settings.py",
@@ -225,7 +209,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -234,7 +218,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1246,
+						"buffer_size": 2621,
 						"regions":
 						{
 							"bookmark_;":
@@ -243,8 +227,8 @@
 								"regions":
 								[
 									[
-										1250,
-										1250
+										2625,
+										2625
 									]
 								]
 							}
@@ -252,8 +236,8 @@
 						"selection":
 						[
 							[
-								1106,
-								1106
+								731,
+								731
 							]
 						],
 						"settings":
@@ -269,101 +253,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "Data/templates/Data/checkData.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 118,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								118,
-								118
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Data/templates/Data/addFilter.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 239,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "radnet/templates/base.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 508,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								240,
-								240
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
 					"file": "Data/urls.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 491,
+						"buffer_size": 579,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								452,
-								452
+								510,
+								510
 							]
 						],
 						"settings":
@@ -377,7 +279,61 @@
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 2,
+					"file": "Data/templates/Data/checkData.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1510,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								849,
+								849
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 51.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Data/templates/Data/addFilter.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 239,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								137,
+								137
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "radnet/settings.py",
 					"semi_transient": false,
 					"settings":
@@ -401,91 +357,6 @@
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "radnet/static/style.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1028,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								639,
-								639
-							]
-						],
-						"settings":
-						{
-							"auto_name": "",
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 459.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Data/templates/Data/addRawData.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 298,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								298,
-								298
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "Data/models.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2117,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1405,
-								1405
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 204.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -16,9 +16,8 @@ def addFilter(request):
 		try:
 			filterform.save()
 			return HttpResponseRedirect('/Data/AddData/')
-		except(e):
-			print e
-			return HttpResponseRedirect('/Data/AddData/')
+		except:
+			return render(request, 'Data/addFilter.html', {'filterform': filterform})
 	else:
 		filterform = FilterForm()
 
@@ -28,10 +27,15 @@ def addRawData(request):
 	if (request.method == 'POST'):
 		rawDataForm = RawDataForm(request.POST)
 		try:
-			rawDataForm.save()
-			return HttpResponseRedirect('/Data/AddRawData/')
+			print rawDataForm.is_valid()
+			if rawDataForm.is_valid():
+				rawDataForm.save()
+				return HttpResponseRedirect('/Data/AddRawData/')
+			else:
+				return render(request, 'Data/addRawData.html', { 'rawDataForm': rawDataForm,})	
 		except:
-			return HttpResponseRedirect('/Data/AddData/')
+			return render(request, 'Data/addRawData.html', { 'rawDataForm': rawDataForm,})
+		
 
 	rawDataForm = RawDataForm()
 
@@ -68,7 +72,6 @@ def checkData(request, filter_id=0):
 				activityData.append(activity)
 			getFilterForm = None
 		except:
-			print 'test'
 			getFilterForm = GetFilterForm()
 			filter_id = 0
 			mainFilter = None
@@ -85,4 +88,3 @@ def viewData(request):
 
 def uploadData(request):
 	return render(request, 'Data/uploadData.html')
-

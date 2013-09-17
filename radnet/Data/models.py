@@ -2,6 +2,7 @@ from django import forms
 from django.db import models
 from django.forms import ModelForm
 from django.forms.extras.widgets import SelectDateWidget
+from django.core.exceptions import *
 
 
 class BetaEfficiency(models.Model):
@@ -31,6 +32,12 @@ class Filter(models.Model):
 	def __unicode__(self):
 		return str(self.filterNum) + ': ' + str(self.startDate) + ' - ' + str(self.endDate)
 
+	def clean(self):
+		#super(models.Model, self).clean()
+		if len(str(int(self.timeStart))) != 6:
+			raise ValidationError('Time Start must be HHMMSS format')
+
+
 class RawData(models.Model):
 	Filter = models.ForeignKey(Filter)
 	time = models.IntegerField()
@@ -40,6 +47,10 @@ class RawData(models.Model):
 
 	def __unicode__(self):
 		return str(self.Filter) + ' ' + str(self.time)
+
+	def clean(self):
+		if len(str(int(self.time))) != 6:
+			raise ValidationError('Time must be HHMMSS format')
 
 
 class Activity(models.Model):
@@ -53,7 +64,12 @@ class Activity(models.Model):
 	netBeta = models.FloatField()
 
 	def fillData(self):
-		self.deltaT = self.RawData.time - self.Filter.timeStart
+		startTime = timeToHours(str(self.Filter.timeStart))
+		rawTime = timeToHours(str(self.RawData.time))
+		if rawTime < startTime:
+			rawTime += 24.0
+
+		self.deltaT = rawTime - startTime
 		self.netAlBet = self.RawData.betaReading - self.RawData.cleanFilterCount
 		self.netBeta = self.netAlBet - self.RawData.alphaReading
 		self.alphaAct = self.RawData.alphaReading * self.Filter.alphaCoeff.coefficient
@@ -101,3 +117,8 @@ class BetaCoeffForm(ModelForm):
 
 class GetFilterForm(forms.Form):
 	filterID = forms.ModelChoiceField(queryset=Filter.objects.all(), empty_label=None)
+
+def timeToHours(timeString):
+	timeString = str(timeString)
+	time = float(timeString[0:2]) + float(timeString[2:4])/60.0 + float(timeString[4:6])/3600.0
+	return time
