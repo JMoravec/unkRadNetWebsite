@@ -1,6 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from Data.models import *
+from django.forms.models import modelformset_factory
     
 
 def index(request):
@@ -14,6 +15,7 @@ def addFilter(request):
 		filterform = FilterForm(request.POST)
 		try:
 			filterform.save()
+			return HttpResponseRedirect('/Data/AddData/')
 		except(e):
 			print e
 			return HttpResponseRedirect('/Data/AddData/')
@@ -23,39 +25,60 @@ def addFilter(request):
 	return render(request, 'Data/addFilter.html', { 'filterform': filterform, })	
 
 def addRawData(request):
-	if request.method == 'GET':
-		rows = 1
-		rowForm = rawDataRows()
-
-	"""
-	if (request.method == 'POST' and submit is True):
+	if (request.method == 'POST'):
 		rawDataForm = RawDataForm(request.POST)
-		activityForm = ActivityForm(request.POST)
 		try:
 			rawDataForm.save()
-			activityForm.save()
-		except(e):
-			print e
+			return HttpResponseRedirect('/Data/AddRawData/')
+		except:
 			return HttpResponseRedirect('/Data/AddData/')
-	"""
 
-	if (request.method == 'POST'):
-		rowForm = rawDataRows(request.POST)
-		if rowForm.is_valid():
-			rows = rowForm.cleaned_data['rows']
-		else:
-			rows = 1
+	rawDataForm = RawDataForm()
 
+	return render(request, 'Data/addRawData.html', { 'rawDataForm': rawDataForm,})
 
-	rawDataForm = [] 
-	activityForm = []
-
-	for i in range(0, rows):
-		rawDataForm.append(RawDataForm())
-		activityForm.append(ActivityForm())
-
-	return render(request, 'Data/addRawData.html', { 'rawDataForm': rawDataForm, 'activityForm': activityForm,'rowForm': rowForm })
-
+def checkData(request, filter_id=0):
+	if (request.method == 'POST' and filter_id == 0):
+		getFilterForm = GetFilterForm(request.POST)
+		if getFilterForm.is_valid():
+			selection = getFilterForm.cleaned_data['filterID']
+			return HttpResponseRedirect('/Data/AddRawData/CheckData/' + str(selection.id) + '/')
+	elif (request.method == 'POST' and filter_id != 0):
+		mainFilter = Filter.objects.get(id=filter_id)
+		rawData = RawData.objects.filter(Filter=filter_id)
+		rawData = rawData.order_by('time')
+		for data in rawData:
+			activity = Activity()
+			activity.Filter = mainFilter
+			activity.RawData = data
+			activity.fillData()
+			activity.save()
+		return HttpResponseRedirect('/Data/')
+	elif filter_id != 0:
+		try:
+			mainFilter = Filter.objects.get(id=filter_id)
+			rawData = RawData.objects.filter(Filter=filter_id)
+			rawData = rawData.order_by('time')
+			activityData = []
+			for data in rawData:
+				activity = Activity()
+				activity.Filter = mainFilter
+				activity.RawData = data
+				activity.fillData()
+				activityData.append(activity)
+			getFilterForm = None
+		except:
+			print 'test'
+			getFilterForm = GetFilterForm()
+			filter_id = 0
+			mainFilter = None
+			activityData = None
+	else:
+		getFilterForm = GetFilterForm()			
+		mainFilter = None
+		activityData = None
+	context ={ 'getFilterForm': getFilterForm, 'filter_id': filter_id, 'mainFilter': mainFilter, 'activityData': activityData} 
+	return render(request, 'Data/checkData.html', context)
 
 def viewData(request):
 	return HttpResponse("view data page")

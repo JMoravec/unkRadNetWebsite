@@ -2,7 +2,7 @@
 {% block title %}Add Filter{% endblock %}
 
 {% block content %}
-	<form action="/Data/addData/" method="post"> {% csrf_token %}
+	<form action="/Data/AddFilter/" method="post"> {% csrf_token %}
 	{{ filterform.as_p}}
 	<input type="submit" value="Submit" />
 	</form>

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}Check Data{% endblock %}
+
+{% block content %}
+	{% if filter_id == 0 %}
+		<form action='/Data/AddRawData/CheckData/' method="post"> {% csrf_token %}
+			{{getFilterForm.as_table}}
+			<input type="submit" value="Submit" />
+		</form>
+	{% endif %}
+	{%if mainFilter %}
+		<form action='/Data/AddRawData/CheckData/{{filter_id}}/' method="post"> {% csrf_token %}
+		<div id='topDataSheet'>
+		Filter #: {{ mainFilter.filterNum}} <br />
+		Station #: 724 Kearney, NE <br />
+		Sampled Days: {{mainFilter.startDate}} - {{mainFilter.endDate}} <br />
+		t_stop: {{mainFilter.timeStart}} <br />
+		Sample time: {{mainFilter.sampleTime}} hr <br />
+		Sample volume: {{mainFilter.sampleVolume}} m^3 <br />
+		</div>
+		<div id='mainDataSheet'>
+		<table border="1">
+		<tr>
+			<td>HHMMSS</td>
+			<td>(alpha, beta)</td>
+			<td>CFC</td>
+			<td>Net(alpha, bet)</td>
+			<td>alpha</td>
+			<td>Net Beta</td>
+			<td>Alpha X {{mainFilter.alphaCoeff}}</td>
+			<td>Beta X {{mainFilter.betaCoeff}}</td>
+			<td>t - tstop</td>
+		</tr>
+		{% for data in activityData %}
+			<tr>
+			<td>{{data.RawData.time}}</td>
+			<td>{{data.RawData.betaReading}}</td>
+			<td>{{data.RawData.cleanFilterCount}}</td>
+			<td>{{data.netAlBet}}</td>
+			<td>{{data.RawData.alphaReading}}</td>
+			<td>{{data.netBeta}}</td>
+			<td>{{data.alphaAct}}</td>
+			<td>{{data.betaAct}}</td>
+			<td>{{data.deltaT}}</td>
+			</tr>
+		{% endfor %}
+		</table>
+		</div>
+		<input type="submit" value="Submit" />
+		</form>
+	{% endif %}
+{% endblock %}

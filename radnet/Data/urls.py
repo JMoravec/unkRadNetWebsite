@@ -8,4 +8,6 @@ urlpatterns = patterns('',
 	url(r'^UploadData/$', views.uploadData, name='uploadData'),
 	url(r'^AddFilter/$', views.addFilter, name='addFilter'),
 	url(r'^AddRawData/$', views.addRawData, name='addRawData'),
+	url(r'^AddRawData/CheckData/$', views.checkData, name='checkData'),
+	url(r'^AddRawData/CheckData/(?P<filter_id>\d+)/$', views.checkData, name='checkData'),
 )

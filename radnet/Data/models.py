@@ -8,14 +8,14 @@ class BetaEfficiency(models.Model):
 	coefficient = models.FloatField()
 
 	def __unicode__(self):
-		return self.coefficient
+		return str(self.coefficient)
 
 
 class AlphaEfficiency(models.Model):
 	coefficient = models.FloatField()
 
 	def __unicode__(self):
-		return self.coefficient
+		return str(self.coefficient)
 
 
 class Filter(models.Model):
@@ -29,7 +29,7 @@ class Filter(models.Model):
 	betaCoeff = models.ForeignKey(BetaEfficiency)
 
 	def __unicode__(self):
-		return str(self.startDate) + ' - ' + str(self.endDate)
+		return str(self.filterNum) + ': ' + str(self.startDate) + ' - ' + str(self.endDate)
 
 class RawData(models.Model):
 	Filter = models.ForeignKey(Filter)
@@ -43,11 +43,21 @@ class RawData(models.Model):
 
 
 class Activity(models.Model):
-	filterID = models.ForeignKey(Filter)
-	rawData = models.ForeignKey(RawData)
+	Filter = models.ForeignKey(Filter)
+	RawData = models.ForeignKey(RawData)
 	deltaT = models.FloatField()
 	alphaAct = models.FloatField()
 	betaAct = models.FloatField()
+
+	netAlBet = models.FloatField()
+	netBeta = models.FloatField()
+
+	def fillData(self):
+		self.deltaT = self.RawData.time - self.Filter.timeStart
+		self.netAlBet = self.RawData.betaReading - self.RawData.cleanFilterCount
+		self.netBeta = self.netAlBet - self.RawData.alphaReading
+		self.alphaAct = self.RawData.alphaReading * self.Filter.alphaCoeff.coefficient
+		self.betaAct = self.netBeta * self.Filter.betaCoeff.coefficient
 
 
 class AlphaCurve(models.Model):
@@ -89,5 +99,5 @@ class BetaCoeffForm(ModelForm):
 	class Meta:
 		model = BetaEfficiency
 
-class rawDataRows(forms.Form):
-	rows = forms.IntegerField()
+class GetFilterForm(forms.Form):
+	filterID = forms.ModelChoiceField(queryset=Filter.objects.all(), empty_label=None)
