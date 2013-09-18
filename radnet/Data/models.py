@@ -29,6 +29,8 @@ class Filter(models.Model):
 	alphaCoeff = models.ForeignKey(AlphaEfficiency)
 	betaCoeff = models.ForeignKey(BetaEfficiency)
 
+	activityCalculated = models.BooleanField()
+
 	def __unicode__(self):
 		return str(self.filterNum) + ': ' + str(self.startDate) + ' - ' + str(self.endDate)
 
@@ -98,6 +100,7 @@ class FilterForm(ModelForm):
 			'startDate': SelectDateWidget(),
 			'endDate': SelectDateWidget(),
 		}
+		exclude = ['activityCalculated']
 
 class RawDataForm(ModelForm):
 	class Meta:
