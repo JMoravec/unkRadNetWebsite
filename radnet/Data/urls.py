@@ -11,4 +11,6 @@ urlpatterns = patterns('',
 	url(r'^AddRawData/$', views.addRawData, name='addRawData'),
 	url(r'^AddRawData/CheckData/$', views.checkData, name='checkData'),
 	url(r'^AddRawData/CheckData/(?P<filter_id>\d+)/$', views.checkData, name='checkData'),
+	url(r'^FitToCurve/(?P<filter_id>\d+)/$', views.fitCurve, name='fitCurve'),
+	url(r'^FitToCurve/$', views.fitCurve, name='fitCurve'),
 )

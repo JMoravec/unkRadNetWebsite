@@ -79,19 +79,24 @@ class Activity(models.Model):
 
 
 class AlphaCurve(models.Model):
-	filterID = models.ForeignKey(Filter)
+	Filter = models.ForeignKey(Filter)
 	alpha1 = models.FloatField()
 	alpha1Lambda = models.FloatField()
 	alpha2 = models.FloatField()
 	alpha2Lambda = models.FloatField()
 
+	def __unicode__(self):
+		return str(self.Filter) + '\n' + str(self.alpha1) + '\n' + str(self.alpha1Lambda) + '\n' + str(self.alpha2) + '\n' + str(self.alpha2Lambda)
 
 class BetaCurve(models.Model):
-	filterID = models.ForeignKey(Filter)
+	Filter = models.ForeignKey(Filter)
 	beta1 = models.FloatField()
 	beta1Lambda = models.FloatField()
 	beta2 = models.FloatField()
 	beta2Lambda = models.FloatField()
+
+	def __unicode__(self):
+		return str(self.Filter) + '\n' + str(self.beta1) + '\n' + str(self.beta1Lambda) + '\n' + str(self.beta2) + '\n' + str(self.beta2Lambda)
 
 class FilterForm(ModelForm):
 	class Meta:

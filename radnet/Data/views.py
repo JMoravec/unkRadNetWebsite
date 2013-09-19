@@ -1,7 +1,7 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from Data.models import *
-from django.forms.models import modelformset_factory
+from calculate import fitToCurve
     
 
 def index(request):
@@ -63,12 +63,14 @@ def checkData(request, filter_id=0):
 				activity.save()
 			mainFilter.activityCalculated = True
 			mainFilter.save()
-			return HttpResponseRedirect('/Data/')
+			return HttpResponseRedirect('/Data/FitToCurve/' + str(filter_id) + '/')
 		else:
-			return HttpResponseRedirect('/Data/')
+			HttpResponseRedirect('/Data/ViewData/' + str(filter_id) + '/')
 	elif filter_id != 0:
 		try:
 			mainFilter = Filter.objects.get(id=filter_id)
+			if mainFilter.activityCalculated:
+				return HttpResponseRedirect('/Data/ViewData/' + str(filter_id) + '/')
 			rawData = RawData.objects.filter(Filter=filter_id)
 			rawData = rawData.order_by('time')
 			activityData = []
@@ -114,6 +116,22 @@ def viewData(request, filter_id=0):
 	getFilterForm = GetFilterForm()
 	context = {'getFilterForm': getFilterForm, 'filter_id': filter_id, 'activity': activity, 'mainFilter': mainFilter,}
  	return render(request, 'Data/viewData.html', context)
+
+
+def fitCurve(request, filter_id=0):
+	try:
+		alphaCurve = AlphaCurve.objects.get(Filter=filter_id)
+		betaCurve = BetaCurve.objects.get(Filter=filter_id)
+		context = {'alphaCurve': alphaCurve, 'betaCurve': betaCurve,}
+		return render(request, 'Data/fitCurve.html', context)
+	except:
+		if filter_id == 0:
+			return HttpResponseRedirect('/Data/')
+		else: 
+			print filter_id
+			fitToCurve(filter_id)
+			return HttpResponseRedirect('/Data/FitToCurve/' + str(filter_id) + '/')
+
 
 
 def uploadData(request):
