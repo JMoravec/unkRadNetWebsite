@@ -126,7 +126,12 @@ class BetaCoeffForm(ModelForm):
 class GetFilterForm(forms.Form):
 	filterID = forms.ModelChoiceField(queryset=Filter.objects.all(), empty_label=None)
 
+class UploadFileForm(forms.Form):
+	title = forms.CharField(max_length=50)
+	file = forms.FileField()
+
 def timeToHours(timeString):
 	timeString = str(timeString)
+	print timeString
 	time = float(timeString[0:2]) + float(timeString[2:4])/60.0 + float(timeString[4:6])/3600.0
 	return time

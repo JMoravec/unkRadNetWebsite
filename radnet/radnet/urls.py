@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'radnet.views.home', name='home'),
+    url(r'^$', 'radnet.views.home', name='home'),
     # url(r'^radnet/', include('radnet.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:

@@ -4,16 +4,36 @@
 		"selected_items":
 		[
 			[
-				"HttpRespo",
-				"HttpResponseRedirect"
+				"betaIn",
+				"betaInitial1"
 			],
 			[
-				"activi",
-				"activityData"
+				"alphaLa",
+				"alphaLam1"
+			],
+			[
+				"alphaIn",
+				"alphaInitial2"
+			],
+			[
+				"alphaIniti",
+				"alphaInitial1"
 			],
 			[
 				"acti",
-				"activityData"
+				"activityCalculated"
+			],
+			[
+				"activi",
+				"activityCalculated"
+			],
+			[
+				"rawD",
+				"rawDataForm"
+			],
+			[
+				"HttpRespo",
+				"HttpResponseRedirect"
 			],
 			[
 				"HttpR",
@@ -64,18 +84,37 @@
 	"buffers":
 	[
 		{
-			"file": "Data/views.py",
+			"contents": "from django.conf.urls import patterns, url\nfrom Data import views\n\nurlpatterns = patterns('',\n	url(r'^$', views.index, name='index'),\n	url(r'^AddData/$', views.addData, name='addData'),\n	url(r'^ViewData/$', views.viewData, name='viewData'),\n	url(r'^ViewData/(?P<filter_id>\\d+)/$', views.viewData, name='viewData'),\n	url(r'^UploadData/$', views.uploadData, name='uploadData'),\n	url(r'^AddFilter/$', views.addFilter, name='addFilter'),\n	url(r'^AddRawData/$', views.addRawData, name='addRawData'),\n	url(r'^AddRawData/CheckData/$', views.checkData, name='checkData'),\n	url(r'^AddRawData/CheckData/(?P<filter_id>\\d+)/$', views.checkData, name='checkData'),\n	url(r'^FitToCurve/(?P<filter_id>\\d+)/$', views.fitCurve, name='fitCurve'),\n	url(r'^FitToCurve/$', views.fitCurve, name='fitCurve'),\n)",
+			"file": "Data/urls.py",
+			"file_size": 786,
+			"file_write_time": 130240220710599833,
 			"settings":
 			{
-				"buffer_size": 2621,
+				"buffer_size": 786,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "Data/urls.py",
+			"file": "radnet/templates/base.html",
 			"settings":
 			{
-				"buffer_size": 579,
+				"buffer_size": 638,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "radnet/urls.py",
+			"settings":
+			{
+				"buffer_size": 590,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Data/views.py",
+			"settings":
+			{
+				"buffer_size": 8176,
 				"line_ending": "Unix"
 			}
 		},
@@ -88,18 +127,10 @@
 			}
 		},
 		{
-			"file": "Data/templates/Data/addFilter.html",
+			"file": "Data/templates/Data/uploadData.html",
 			"settings":
 			{
-				"buffer_size": 239,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "radnet/settings.py",
-			"settings":
-			{
-				"buffer_size": 5597,
+				"buffer_size": 287,
 				"line_ending": "Unix"
 			}
 		}
@@ -119,16 +150,24 @@
 				":w - Save"
 			],
 			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				":dj",
+				"Set Syntax: Python Django"
+			],
+			[
+				":q",
+				"Set Syntax: SQL"
+			],
+			[
 				":ws",
 				":w - Save"
 			],
 			[
 				":",
 				":w - Save"
-			],
-			[
-				"Package Control: in",
-				"Package Control: Install Package"
 			],
 			[
 				"Package Control: ins",
@@ -160,13 +199,40 @@
 	},
 	"file_history":
 	[
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/models.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/calculate.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/fitCurve.html",
+		"/home/moravec/unkRadNetWebsite2/radnet/radnet/templates/home.html",
+		"/home/moravec/unkRadNetWebsite2/radnet/radnet/views.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/Services/SolverService.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/IExtendedVersionHandler.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/Models_2D/BioScience.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/IModel.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_LinearGrowth.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_ExponentialGrowth.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_ExponentialDecay.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_ExponentialDecayAndOffset.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_LinearGrowthAndOffset.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_ExponentialGrowthAndOffset.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_LinearDecayAndOffset.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_LinearDecay.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_Offset.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_Reciprocal.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_ReciprocalWithOffset.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_Inverse.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_InverseWithOffset.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/ExtendedVersionHandlers/ExtendedVersionHandler_Default.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/pyeq2/DataCache/DataCache.py",
+		"/home/moravec/unkRadNetWebsite2/radnet/radnet/settings.py",
 		"/home/moravec/unkRadNetWebsite2/radnet/radnet/templates/base.html",
 		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/addRawData.html",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/addFilter.html",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/viewData.html",
+		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/checkData.html",
 		"/home/moravec/unkRadNetWebsite2/radnet/radnet/static/style.css",
 		"/home/moravec/unkRadNetWebsite2/radnet/Data/urls.py",
 		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/index.html",
 		"/home/moravec/unkRadNetWebsite2/radnet/Data/templates/Data/addData.html",
-		"/home/moravec/unkRadNetWebsite2/radnet/radnet/settings.py",
 		"/home/moravec/radNetWebsite/radnet/radnet/urls.py",
 		"/home/moravec/radNetWebsite/radnet/Data/admin.py",
 		"/home/moravec/radNetWebsite/radnet/newData/admin.py",
@@ -192,6 +258,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"filterNum"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -209,63 +276,24 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "Data/views.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2621,
-						"regions":
-						{
-							"bookmark_;":
-							{
-								"flags": 144,
-								"regions":
-								[
-									[
-										2625,
-										2625
-									]
-								]
-							}
-						},
-						"selection":
-						[
-							[
-								731,
-								731
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
 					"file": "Data/urls.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 579,
+						"buffer_size": 786,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								510,
-								510
+								331,
+								331
 							]
 						],
 						"settings":
@@ -279,9 +307,103 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "Data/templates/Data/checkData.html",
+					"buffer": 1,
+					"file": "radnet/templates/base.html",
 					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 638,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								260,
+								260
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "radnet/urls.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 590,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								207,
+								207
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Data/views.py",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8176,
+						"regions":
+						{
+							"bookmark_;":
+							{
+								"flags": 144,
+								"regions":
+								[
+									[
+										8180,
+										8180
+									]
+								]
+							}
+						},
+						"selection":
+						[
+							[
+								4941,
+								4941
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1379.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "Data/templates/Data/checkData.html",
+					"semi_transient": true,
 					"settings":
 					{
 						"buffer_size": 1510,
@@ -291,13 +413,14 @@
 						"selection":
 						[
 							[
-								849,
-								849
+								250,
+								250
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage"
+							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 51.0,
@@ -306,54 +429,25 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "Data/templates/Data/addFilter.html",
+					"buffer": 5,
+					"file": "Data/templates/Data/uploadData.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 239,
+						"buffer_size": 287,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								137,
-								137
+								165,
+								165
 							]
 						],
 						"settings":
 						{
 							"syntax": "Packages/Djaneiro/Syntaxes/HTML (Django).tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "radnet/settings.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5597,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								740,
-								740
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Djaneiro/Syntaxes/Python Django.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -398,7 +492,7 @@
 	"project": "radNetWebsite.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 46.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -432,7 +526,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 162.0,
+	"side_bar_width": 172.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
