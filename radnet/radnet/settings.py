@@ -5,18 +5,24 @@ TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
+    ('Joshua Moravec', 'joshua.moravec@gmail.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/home/moravec/unkRadNetWebsite2/radnet/test.db',                      # Or path to database file if using sqlite3.
+        # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',
+        # Or path to database file if using sqlite3.
+        'NAME': '/home/joshua/unkRadNetWebsite/radnet/test.db',
+
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'HOST': '',
+        # Empty for localhost through domain sockets or '127.0.0.1' for
+        # localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
 }
@@ -72,7 +78,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/moravec/unkRadNetWebsite2/radnet/radnet/static/',
+    '/home/joshua/unkRadNetWebsite/radnet/radnet/static/',
 )
 
 # List of finder classes that know how to find static files in
@@ -80,7 +86,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -90,7 +96,7 @@ SECRET_KEY = '&@&+%sun*yc)jq%z7b7etj@m@v2r5ys2795g8q6ry_l+qr0wiz'
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
+    # 'django.template.loaders.eggs.Loader',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -109,11 +115,12 @@ ROOT_URLCONF = 'radnet.urls'
 WSGI_APPLICATION = 'radnet.wsgi.application'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    # Put strings here, like "/home/html/django_templates" or
+    # "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    '/home/moravec/unkRadNetWebsite2/radnet/radnet/templates',
-    '/home/moravec/unkRadNetWebsite2/radnet/Data/templates',
+    '/home/joshua/unkRadNetWebsite/radnet/radnet/templates',
+    '/home/joshua/unkRadNetWebsite/radnet/Data/templates',
 )
 
 INSTALLED_APPS = (
