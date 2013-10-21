@@ -1,35 +1,36 @@
 {% extends "base.html" %}
-{% block title %}Check Data{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Check Data" %}{% endblock %}
 
 {% block content %}
 	{% if filter_id == 0 %}
 		<form action='/Data/AddRawData/CheckData/' method="post"> {% csrf_token %}
 			{{getFilterForm.as_table}}
-			<input type="submit" value="Submit" />
+			<input type="submit" value="{% trans "Submit" %}" />
 		</form>
 	{% endif %}
 	{%if mainFilter %}
 		<form action='/Data/AddRawData/CheckData/{{filter_id}}/' method="post"> {% csrf_token %}
 		<div id='topDataSheet'>
-		Filter #: {{ mainFilter.filterNum}} <br />
-		Station #: 724 Kearney, NE <br />
-		Sampled Days: {{mainFilter.startDate}} - {{mainFilter.endDate}} <br />
-		t_stop: {{mainFilter.timeStart}} <br />
-		Sample time: {{mainFilter.sampleTime}} hr <br />
-		Sample volume: {{mainFilter.sampleVolume}} m^3 <br />
+		{% trans "Filter #:" %} {{ mainFilter.filterNum}} <br />
+		{% trans "Station #: 724 Kearney, NE" %} <br />
+		{% trans "Sampled Days: "%} {{mainFilter.startDate}} - {{mainFilter.endDate}} <br />
+		{% trans "t_stop:" %} {{mainFilter.timeStart}} <br />
+		{% trans "Sample time:" %} {{mainFilter.sampleTime}} hr <br />
+		{% trans "Sample volume:" %} {{mainFilter.sampleVolume}} m^3 <br />
 		</div>
 		<div id='mainDataSheet'>
 		<table border="1">
 		<tr>
-			<td>HHMMSS</td>
-			<td>(alpha, beta)</td>
-			<td>CFC</td>
-			<td>Net(alpha, bet)</td>
-			<td>alpha</td>
-			<td>Net Beta</td>
-			<td>Alpha X {{mainFilter.alphaCoeff}}</td>
-			<td>Beta X {{mainFilter.betaCoeff}}</td>
-			<td>t - tstop</td>
+			<td>{% trans "HHMMSS" %}</td>
+			<td>{% trans "(alpha, beta)" %}</td>
+			<td>{% trans "CFC" %}</td>
+			<td>{% trans "Net(alpha, bet)" %}</td>
+			<td>{% trans "alpha" %}</td>
+			<td>{% trans "Net Beta" %}</td>
+			<td>{% trans "Alpha X " %}{{mainFilter.alphaCoeff}}</td>
+			<td>{% trans "Beta X " %}{{mainFilter.betaCoeff}}</td>
+			<td>{% trans "t - tstop" %}</td>
 		</tr>
 		{% for data in activityData %}
 			<tr>
@@ -46,7 +47,7 @@
 		{% endfor %}
 		</table>
 		</div>
-		<input type="submit" value="Submit" />
+		<input type="submit" value="{% trans "Submit" %}" />
 		</form>
 	{% endif %}
 {% endblock %}

@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load i18n %}
 {% load staticfiles %}
 <html lang="en">
 <head>
@@ -11,19 +12,19 @@
 		<h1 id="logo"><b>UNK Radnet</b></h1>
 		<div id="menu">
 			<div>
-				<a href="/Data/" >Home</a>
+				<a href="/Data/">{% trans "Home" %}</a>
 			</div>
 
 			<div>
-				<a href="/Data/AddData/">Add Data</a>
+				<a href="/Data/AddData/">{% trans "Add Data" %}</a>
 			</div>
 
 			<div>
-				<a href="/Data/ViewData">View Data</a>
+				<a href="/Data/ViewData">{% trans "View Data" %}</a>
 			</div>
 
 			<div>
-				<a href="/Data/UploadData">Upload Data</a>
+				<a href="/Data/UploadData">{% trans "Upload Data" %}</a>
 			</div>
 		</div>
 	</div>
@@ -31,7 +32,7 @@
 	<div id="content">
 		{% block content %}{% endblock %}
 	</div>
-	
+
 
 </body>
 </html>

@@ -1,10 +1,11 @@
 {% extends "base.html" %}
-{% block title %}Add Filter{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Add Filter" %}{% endblock %}
 
 {% block content %}
-    <a href="/Data/AddCoefficients/">Add Ceofficient Numbers</a>
+    <a href="/Data/AddCoefficients/">{% trans "Add Ceofficient Numbers" %}</a>
 	<form action="/Data/AddFilter/" method="post"> {% csrf_token %}
 	{{ filterform.as_p}}
-	<input type="submit" value="Submit" />
+	<input type="submit" value="{% trans "Submit" %}" />
 	</form>
 {% endblock %}

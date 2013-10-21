@@ -1,0 +1,196 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-10-20 23:32-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: Data/models.py:42
+msgid "Time Start must be HHMMSS format"
+msgstr ""
+
+#: Data/models.py:57
+msgid "Time must be HHMMSS format"
+msgstr ""
+
+#: Data/models.py:114 Data/templates/Data/checkData.html:15
+#: Data/templates/Data/viewData.html:13
+msgid "Filter #:"
+msgstr ""
+
+#: Data/models.py:115
+msgid "Start Date:"
+msgstr ""
+
+#: Data/models.py:116
+msgid "End Date:"
+msgstr ""
+
+#: Data/models.py:117
+msgid "Sample Time (In Hours):"
+msgstr ""
+
+#: Data/models.py:118
+msgid "Sample Volume:"
+msgstr ""
+
+#: Data/models.py:119
+msgid "Time Start (HHMMSS):"
+msgstr ""
+
+#: Data/models.py:120 Data/models.py:145
+msgid "Alpha Coefficient:"
+msgstr ""
+
+#: Data/models.py:121 Data/models.py:154
+msgid "Beta Coefficient:"
+msgstr ""
+
+#: Data/templates/Data/addCoeffs.html:3
+msgid "Add Coefficient Numbers"
+msgstr ""
+
+#: Data/templates/Data/addCoeffs.html:8 Data/templates/Data/addCoeffs.html:13
+#: Data/templates/Data/addFilter.html:9 Data/templates/Data/addRawData.html:8
+#: Data/templates/Data/checkData.html:9 Data/templates/Data/checkData.html:50
+#: Data/templates/Data/uploadData.html:10 Data/templates/Data/viewData.html:8
+msgid "Submit"
+msgstr ""
+
+#: Data/templates/Data/addCoeffs.html:15 Data/templates/Data/addData.html:6
+#: Data/templates/Data/addFilter.html:3
+msgid "Add Filter"
+msgstr ""
+
+#: Data/templates/Data/addData.html:3 radnet/templates/base.html:19
+msgid "Add Data"
+msgstr ""
+
+#: Data/templates/Data/addData.html:7 Data/templates/Data/addRawData.html:3
+msgid "Add Raw Data"
+msgstr ""
+
+#: Data/templates/Data/addFilter.html:6
+msgid "Add Ceofficient Numbers"
+msgstr ""
+
+#: Data/templates/Data/addRawData.html:10
+msgid "CheckData"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:3
+msgid "Check Data"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:16 Data/templates/Data/viewData.html:14
+msgid "Station #: 724 Kearney, NE"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:17
+msgid "Sampled Days: "
+msgstr ""
+
+#: Data/templates/Data/checkData.html:18 Data/templates/Data/viewData.html:16
+msgid "t_stop:"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:19 Data/templates/Data/viewData.html:17
+msgid "Sample time:"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:20 Data/templates/Data/viewData.html:18
+msgid "Sample volume:"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:25 Data/templates/Data/viewData.html:23
+msgid "HHMMSS"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:26 Data/templates/Data/viewData.html:24
+msgid "(alpha, beta)"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:27 Data/templates/Data/viewData.html:25
+msgid "CFC"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:28 Data/templates/Data/viewData.html:26
+msgid "Net(alpha, bet)"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:29 Data/templates/Data/viewData.html:27
+msgid "alpha"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:30 Data/templates/Data/viewData.html:28
+msgid "Net Beta"
+msgstr ""
+
+#: Data/templates/Data/checkData.html:31
+msgid "Alpha X "
+msgstr ""
+
+#: Data/templates/Data/checkData.html:32
+msgid "Beta X "
+msgstr ""
+
+#: Data/templates/Data/checkData.html:33 Data/templates/Data/viewData.html:31
+msgid "t - tstop"
+msgstr ""
+
+#: Data/templates/Data/fitCurve.html:3
+msgid "Fit To Curve"
+msgstr ""
+
+#: Data/templates/Data/fitCurve.html:6
+msgid "Success!"
+msgstr ""
+
+#: Data/templates/Data/index.html:3 radnet/templates/home.html:3
+msgid "UNK Radnet Home"
+msgstr ""
+
+#: Data/templates/Data/index.html:6
+msgid "You're at the home page."
+msgstr ""
+
+#: Data/templates/Data/uploadData.html:3 radnet/templates/base.html:27
+msgid "Upload Data"
+msgstr ""
+
+#: Data/templates/Data/viewData.html:3 radnet/templates/base.html:23
+msgid "View Data"
+msgstr ""
+
+#: Data/templates/Data/viewData.html:15
+msgid "Sampled Days:"
+msgstr ""
+
+#: Data/templates/Data/viewData.html:29
+msgid "Alpha X"
+msgstr ""
+
+#: Data/templates/Data/viewData.html:30
+msgid "Beta X"
+msgstr ""
+
+#: radnet/templates/base.html:15
+msgid "Home"
+msgstr ""
+
+#: radnet/templates/home.html:6
+msgid "Welcome!"
+msgstr ""

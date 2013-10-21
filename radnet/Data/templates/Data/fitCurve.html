@@ -1,8 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Fit To Curve{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Fit To Curve" %}{% endblock %}
 
 {% block content %}
-	Success! <br />
+	{% trans "Success!" %} <br />
 	{{ alphaCurve }} <br />
 	{{ betaCurve }}
 {% endblock %}
