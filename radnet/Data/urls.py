@@ -18,4 +18,6 @@ urlpatterns = \
              url(r'^FitToCurve/(?P<filter_id>\d+)/$', views.fitCurve,
                  name='fitCurve'),
              url(r'^FitToCurve/$', views.fitCurve, name='fitCurve'),
+             url(r'^AddCoefficients/$', views.addCoefficients),
+             url(r'^AddCoefficients/(?P<typeID>\d+)/$', views.addCoefficients),
              )

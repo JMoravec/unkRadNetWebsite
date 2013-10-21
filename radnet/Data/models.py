@@ -3,6 +3,7 @@ from django.db import models
 from django.forms import ModelForm
 from django.forms.extras.widgets import SelectDateWidget
 from django.core.exceptions import *
+from django.utils.translation import ugettext as _
 
 
 class BetaEfficiency(models.Model):
@@ -38,7 +39,7 @@ class Filter(models.Model):
     def clean(self):
         #super(models.Model, self).clean()
         if len(str(int(self.timeStart))) != 6:
-            raise ValidationError('Time Start must be HHMMSS format')
+            raise ValidationError(_('Time Start must be HHMMSS format'))
 
 
 class RawData(models.Model):
@@ -53,7 +54,7 @@ class RawData(models.Model):
 
     def clean(self):
         if len(str(int(self.time))) != 6:
-            raise ValidationError('Time must be HHMMSS format')
+            raise ValidationError(_('Time must be HHMMSS format'))
 
 
 class Activity(models.Model):
@@ -93,6 +94,7 @@ class AlphaCurve(models.Model):
             str(self.alpha1Lambda) + '\n' + str(self.alpha2) + '\n' + \
             str(self.alpha2Lambda)
 
+
 class BetaCurve(models.Model):
     Filter = models.ForeignKey(Filter)
     beta1 = models.FloatField()
@@ -101,9 +103,23 @@ class BetaCurve(models.Model):
     beta2Lambda = models.FloatField()
 
     def __unicode__(self):
-        return str(self.Filter) + '\n' + str(self.beta1) + '\n' + str(self.beta1Lambda) + '\n' + str(self.beta2) + '\n' + str(self.beta2Lambda)
+        return str(self.Filter) + '\n' + str(self.beta1) + \
+            '\n' + str(self.beta1Lambda) + '\n' + str(self.beta2) + \
+            '\n' + str(self.beta2Lambda)
+
 
 class FilterForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(FilterForm, self).__init__(*args, **kwargs)
+        self.fields['filterNum'].label = _('Filter #:')
+        self.fields['startDate'].label = _('Start Date:')
+        self.fields['endDate'].label = _('End Date:')
+        self.fields['sampleTime'].label = _('Sample Time (In Hours):')
+        self.fields['sampleVolume'].label = _('Sample Volume:')
+        self.fields['timeStart'].label = _('Time Start (HHMMSS):')
+        self.fields['alphaCoeff'].label = _('Alpha Coefficient:')
+        self.fields['betaCoeff'].label = _('Beta Coefficient:')
+
     class Meta:
         model = Filter
         widgets = {
@@ -112,31 +128,49 @@ class FilterForm(ModelForm):
         }
         exclude = ['activityCalculated']
 
+
 class RawDataForm(ModelForm):
     class Meta:
         model = RawData
+
 
 class ActivityForm(ModelForm):
     class Meta:
         model = Activity
 
+
 class AlphaCoeffForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(AlphaCoeffForm, self).__init__(*args, **kwargs)
+        self.fields['coefficient'].label = _('Alpha Coefficient:')
+
     class Meta:
         model = AlphaEfficiency
 
+
 class BetaCoeffForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(BetaCoeffForm, self).__init__(*args, **kwargs)
+        self.fields['coefficient'].label = _('Beta Coefficient:')
+
     class Meta:
         model = BetaEfficiency
 
+
 class GetFilterForm(forms.Form):
-    filterID = forms.ModelChoiceField(queryset=Filter.objects.all(), empty_label=None)
+    filterID = forms.ModelChoiceField(queryset=Filter.objects.all(),
+                                      empty_label=None)
+
 
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)
     file = forms.FileField()
 
+
 def timeToHours(timeString):
     timeString = str(timeString)
     print timeString
-    time = float(timeString[0:2]) + float(timeString[2:4])/60.0 + float(timeString[4:6])/3600.0
+    time = float(timeString[0:2]) + \
+        float(timeString[2:4])/60.0 + \
+        float(timeString[4:6])/3600.0
     return time

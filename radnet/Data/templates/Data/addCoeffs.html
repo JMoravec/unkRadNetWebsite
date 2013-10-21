@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Add Coefficient Numbers{% endblock %}
+
+{% block content %}
+    <form action="/Data/AddCoefficients/1/" method="post"> {%csrf_token %}
+    {{ alphaForm.as_p}}
+    <input type="submit" value="Submit" \>
+    </form>
+
+    <form action="/Data/AddCoefficients/2/" method="post"> {%csrf_token %}
+    {{ betaForm.as_p}}
+    <input type="submit" value="Submit" \>
+    </form>
+    <a href="/Data/AddFilter">Add Filter</a>
+{% endblock %}

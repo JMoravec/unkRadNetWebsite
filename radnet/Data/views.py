@@ -31,6 +31,36 @@ def addFilter(request):
                   {'filterform': filterform, })
 
 
+def addCoefficients(request, typeID=0):
+    if request.method == 'POST' and str(typeID) == str(1):
+        alphaForm = AlphaCoeffForm(request.POST)
+        if alphaForm.is_valid():
+            try:
+                AlphaEfficiency.objects.\
+                    get(coefficient=alphaForm.cleaned_data['coefficient'])
+            except:
+                alphaForm.save()
+
+        betaForm = BetaCoeffForm()
+    elif request.method == 'POST' and str(typeID) == str(2):
+        betaForm = BetaCoeffForm(request.POST)
+        if betaForm.is_valid():
+            try:
+                BetaEfficiency.objects.\
+                    get(coefficient=betaForm.cleaned_data['coefficient'])
+            except:
+                betaForm.save()
+
+        alphaForm = AlphaCoeffForm()
+    else:
+        alphaForm = AlphaCoeffForm()
+        betaForm = BetaCoeffForm()
+
+    return render(request, 'Data/addCoeffs.html',
+                  {'alphaForm': alphaForm,
+                   'betaForm': betaForm, })
+
+
 def addRawData(request):
     if (request.method == 'POST'):
         rawDataForm = RawDataForm(request.POST)
@@ -52,7 +82,6 @@ def addRawData(request):
 
 
 def checkData(request, filter_id=0):
-    print request.method
     if (request.method == 'POST' and filter_id == 0):
         getFilterForm = GetFilterForm(request.POST)
         if getFilterForm.is_valid():
