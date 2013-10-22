@@ -1,1 +1,73 @@
-Just setting up a Readme for now
+Django Source code for UNK Radnet Project
+
+Not a lot of documentation in the code yet, I'll be working in the future
+to get all that set up. If you want to contribute, I suggest first taking a
+look at how to program in Python and Django.
+
+A good place to learn Python is http://learnpythonthehardway.org/
+but the official documentation is also quite good. They might have a
+tutorial there, or at least resources to find some good ones
+
+For Django, take a look at the official docs: https://www.djangoproject.com/
+They have a great tutorial set up that will guide you through the basics.
+In the django docs, make usre that the version in the bottom right is 1.5.
+For Python - 2.x
+
+I also suggest getting to know a little SQL. Just some basics, like SELECT
+commands would give a idea what's going on. While there's no direct SQL code
+in this project (it's handeled by Django), it does store the data in a SQLite3
+file, so it's good to know some of the basics of how things are working in the
+back end.
+
+######################################################################
+#
+#      INSTALLATION
+#
+######################################################################
+
+Installtion should be fairly simple. Make sure you have Python 2.7 and pip on
+your system and virtualenv
+
+Ubuntu/Debian:
+sudo apt-get install python-pip python-dev build-essentials python-virtualenv
+
+Then make sure you have scipy dependancies (minus numpy)
+
+Ubuntu/Debian:
+sudo apt-get install libatlas-base-dev gfortran
+
+Now we're ready to make the virtualenv for the project.
+Go to the main directory of the project and type
+virtualenv radnetPython
+
+Note: It doesn't have to be called radnetPython, but this name is in the .gitignore, which makes things less cluttered later on
+
+Once that's complete, type
+source radnetPython/bin/activate
+
+You should have something like (radnetPython)user@host: for your prompt now.
+What this means is you are now in a clean python install, so you can add/remove
+packages without cluttering up other projects or your main python install. You
+also shouldn't need admin privilges to install the modules either.
+
+Now install the requirements for the project:
+pip install -r dev-req.txt
+
+Now go grab a cup of coffee and go watch a show or something, as it will take
+a while to compile everything
+
+Once everything is installed with no errors, test the app:
+cd radnet
+python manage.py runserver
+
+If there were no install errors for the requirments and Django liked
+everything, you should see
+Development server is running at http://127.0.0.1:8000/
+
+In your web browser, go to 127.0.0.1:8000 and you should see the website!
+Get coding!
+
+Note: you can change where the django dev server runs by running by just adding
+where to run it after the runserver command. eg
+python manage.py runserver 127.0.0.1:8008
+This might be useful to force the webrowser to reload static files
