@@ -25,7 +25,7 @@ back end.
 #
 ######################################################################
 
-Installtion should be fairly simple. Make sure you have Python 2.7 and pip on
+Installation should be fairly simple. Make sure you have Python 2.7 and pip on
 your system and virtualenv
 
 Ubuntu/Debian:
@@ -35,6 +35,9 @@ Then make sure you have scipy dependancies (minus numpy)
 
 Ubuntu/Debian:
 sudo apt-get install libatlas-base-dev gfortran
+
+Windows (Vista-8)
+Install Python(x,y) with Spyder (Spyder includes scipy) from https://code.google.com/p/pythonxy/wiki/Downloads?tm=2
 
 Now we're ready to make the virtualenv for the project.
 Go to the main directory of the project and type
